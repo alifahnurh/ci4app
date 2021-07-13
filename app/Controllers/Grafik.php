@@ -14,4 +14,22 @@ class Grafik extends BaseController
         ];
         return view('grafik/index', $data);
     }
+    public function getData(){
+      try {
+        $grafik = (new GrafikModel())->findAll();
+        $this->request->setHeader('Accept', 'application/json');
+        return $this->response->setJSON([
+          'success' => true,
+          'message' => 'Sukses Mendapatkan Data',
+          'data' => $grafik
+        ]);
+      } catch (Exception $e) {
+        $this->request->setHeader('Accept', 'application/json');
+        return $this->response->setJSON([
+          'success' => false,
+          'message' => $e->getMessage(),
+          'data' => null
+        ]);
+      }
+    }
 }

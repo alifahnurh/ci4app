@@ -14,4 +14,23 @@ class utama extends BaseController
       ];
       return view ('utama/index', $data);
     }
+
+    public function getData(){
+      try {
+        $utama = (new UtamaModel())->findAll();
+        $this->request->setHeader('Accept', 'application/json');
+        return $this->response->setJSON([
+          'success' => true,
+          'message' => 'Sukses Mendapatkan Data',
+          'data' => $utama
+        ]);
+      } catch (Exception $e) {
+        $this->request->setHeader('Accept', 'application/json');
+        return $this->response->setJSON([
+          'success' => false,
+          'message' => $e->getMessage(),
+          'data' => null
+        ]);
+      }
+    }
 }

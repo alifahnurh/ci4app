@@ -21,7 +21,7 @@
     <link href="<?= base_url() ?>/css/basscss.min.css" rel="stylesheet">
 
     <!-- Jquery -->
-    <script src="<?= base_url() ?>/jquery/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ?>/jquery/jquery.min.js"></script>
 
     <!-- fontawesome -->
     <script src="<?= base_url() ?>/js/all.min.js" crossorigin="anonymous"></script>
@@ -33,6 +33,7 @@
     <!-- <script src="?>/assets/Chart/dist/Chart.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <?= $this->renderSection('css'); ?>
 </head>
 
 <body>
