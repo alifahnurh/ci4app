@@ -136,7 +136,7 @@
                 var $new_data = data.data;
 
                 //set breadcump data
-                document.getElementById('current_waktu').innerHTML = $new_data[$new_data.length - 1].waktu;
+                document.getElementById('current_waktu').innerHTML = moment($new_data[$new_data.length - 1].waktu,'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
                 document.getElementById('current_suhu').innerHTML = $new_data[$new_data.length - 1].suhu;
                 document.getElementById('current_kelembapan').innerHTML = $new_data[$new_data.length - 1].kelembapan;
                 document.getElementById('current_amonia').innerHTML = $new_data[$new_data.length - 1].amonia;
@@ -172,11 +172,9 @@
         executeQuery();
 
         // moment.js
-        var el = document.getElementById('current_waktu');
-        text = el.textContent;
-        new_time = moment(text).format('DD-MM-YYYY');
-        el.innerHTML = new_time;
-        console.log(text);
+        // var el = document.getElementById('current_waktu').textContent;
+        // new_time = moment(el,'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
+        // document.getElementById('current_waktu').textContent = new_time;
 
         //execute code every 10 second
         setInterval(function() {

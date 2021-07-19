@@ -14,7 +14,7 @@ class Monitoring extends BaseController
        $monitoring = new MonitoringModel();
        $data = [
            'monitoring' => $monitoring->findAll(),
-            'db' => $monitoring->autodelete() 
+            // 'db' => $monitoring->autodelete() 
        ];
         return view('monitoring/index', $data);
     }
