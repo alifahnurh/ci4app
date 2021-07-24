@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2021 pada 15.54
+-- Waktu pembuatan: 24 Jul 2021 pada 18.00
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -40,21 +40,24 @@ CREATE TABLE `damon` (
 --
 
 INSERT INTO `damon` (`id`, `waktu`, `suhu`, `kelembapan`, `amonia`) VALUES
-(1, '2021-06-15 06:07:21', '30', '12', '4'),
-(2, '2021-06-16 07:08:38', '29', '9', '10'),
-(3, '2021-06-16 07:08:38', '37.5', '6', '2'),
-(4, '2021-06-16 07:10:12', '25', '2', '10'),
-(5, '2021-06-16 07:10:12', '28', '11', '2'),
-(6, '2021-06-16 08:03:54', '27', '8', '10'),
-(7, '2021-06-16 13:15:48', '30', '12', '8'),
-(8, '2021-06-16 13:42:01', '36.6', '10.5', '5.4'),
-(9, '2021-06-17 04:36:36', '31', '5', '4'),
-(10, '2021-06-17 04:36:36', '25', '17', '6'),
-(17, '2021-06-17 14:13:46', '25', '2', '10'),
-(18, '2021-06-18 02:18:13', '28', '12', '5.4'),
-(19, '2021-06-18 02:18:13', '29', '5', '6'),
-(20, '2021-06-18 02:59:29', '35', '5', '4.5'),
-(21, '2021-06-18 03:21:32', '28', '9', '4');
+(42, '2021-07-16 02:24:53', '35', '2', '5.4'),
+(43, '2021-07-16 02:24:53', '28', '11', '6'),
+(44, '2021-07-16 13:29:30', '28', '8', '4.5');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `email`
+--
+
+CREATE TABLE `email` (
+  `id` int(11) NOT NULL,
+  `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `suhu` varchar(8) NOT NULL,
+  `kelembapan` varchar(8) NOT NULL,
+  `amonia` varchar(8) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -169,6 +172,30 @@ CREATE TABLE `tbl_produk` (
 INSERT INTO `tbl_produk` (`no`, `nama_produk`, `stok_produk`, `created_at`, `updated_at`) VALUES
 (2, 'Susu', '500 mL', 2021, 2021);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `level`) VALUES
+(1, 'Test', 'Test@gmail.com', '1234', '2'),
+(2, 'buncis', 'buncis@gmail.com', '678', 'Admin'),
+(3, 'kacang', 'kacang@gmail.com', '567', 'User'),
+(4, 'Alifah', 'alifahnurh.anh.anh@gmail.com', 'admin', 'Admin');
+
 --
 -- Indexes for dumped tables
 --
@@ -177,6 +204,12 @@ INSERT INTO `tbl_produk` (`no`, `nama_produk`, `stok_produk`, `created_at`, `upd
 -- Indeks untuk tabel `damon`
 --
 ALTER TABLE `damon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `email`
+--
+ALTER TABLE `email`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -210,6 +243,12 @@ ALTER TABLE `tbl_produk`
   ADD PRIMARY KEY (`no`);
 
 --
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -217,7 +256,13 @@ ALTER TABLE `tbl_produk`
 -- AUTO_INCREMENT untuk tabel `damon`
 --
 ALTER TABLE `damon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT untuk tabel `email`
+--
+ALTER TABLE `email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kambing`
@@ -248,6 +293,12 @@ ALTER TABLE `tbl_pemerahan`
 --
 ALTER TABLE `tbl_produk`
   MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
